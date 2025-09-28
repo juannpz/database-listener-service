@@ -4,7 +4,7 @@
     "jsr:@hono/hono@4.7.8": "4.7.8",
     "jsr:@juannpz/deno-service-tools@~0.5.7": "0.5.7",
     "jsr:@std/dotenv@~0.225.5": "0.225.5",
-    "npm:kafkajs@*": "2.2.4"
+    "npm:kafkajs@2.2.4": "2.2.4"
   },
   "jsr": {
     "@hono/hono@4.7.8": {
@@ -894,7 +894,7 @@
     "dependencies": [
       "jsr:@juannpz/deno-service-tools@~0.5.7",
       "jsr:@std/dotenv@~0.225.5",
-      "npm:kafkajs@*"
+      "npm:kafkajs@2.2.4"
     ]
   }
 }
