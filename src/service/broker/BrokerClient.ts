@@ -1,6 +1,6 @@
 import { IBrokerConfig,  } from "../service.definition.ts";
 import { Notification } from "../manager/notificationManager/notificationManager.definition.ts";
-import { Kafka, PartitionerArgs, Producer } from "npm:kafkajs";
+import { Kafka, PartitionerArgs, Producer } from "@kafka";
 
 
 export class BrokerClient {
@@ -12,7 +12,11 @@ export class BrokerClient {
     public static async init(config: IBrokerConfig) {
         this.client = new Kafka({
             brokers: [`${config.BROKER_HOST}:${config.BROKER_PORT}`],
-            clientId: config.BROKER_CLIENT_ID
+            clientId: config.BROKER_CLIENT_ID,
+			retry: {
+				initialRetryTime: 300,
+				retries: 10
+			}
         });
 
         this.producer = this.client.producer({

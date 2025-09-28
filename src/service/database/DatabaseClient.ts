@@ -1,4 +1,4 @@
-import postgres from 'https://deno.land/x/postgresjs@v3.4.5/mod.js';
+import postgres from '@postgres';
 import { NOTIFICATION_CHANNEL } from "./database.definition.ts";
 import { IDatabaseConfig } from "../service.definition.ts";
 

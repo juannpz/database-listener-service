@@ -4,8 +4,9 @@
     "start": "deno run --allow-all index.ts"
   },
   "imports": {
-    "@db/postgres": "jsr:@db/postgres@^0.19.5",
-    "@juannpz/deno-service-tools": "jsr:@juannpz/deno-service-tools@^0.5.5",
-    "@std/dotenv": "jsr:@std/dotenv@^0.225.3"
+    "@postgres": "https://deno.land/x/postgresjs@v3.4.7/mod.js",
+    "@juannpz/deno-service-tools": "jsr:@juannpz/deno-service-tools@^0.5.7",
+    "@std/dotenv": "jsr:@std/dotenv@^0.225.5",
+	"@kafka": "npm:kafkajs"
   }
 }
