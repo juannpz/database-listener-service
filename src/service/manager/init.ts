@@ -1,9 +1,13 @@
 import { NotificationManager } from "./notificationManager/NotificationManager.ts";
+import { DatabaseClient } from "../database/DatabaseClient.ts";
 import { IServiceConfig } from "../service.definition.ts";
 import { BrokerClient } from "../broker/BrokerClient.ts";
 
 export async function initManager(config: IServiceConfig) {
-    await NotificationManager.init(config.dbConfig);
+	const databaseClient = new DatabaseClient(config.dbConfig);
+	const brokerClient = new BrokerClient(config.brokerConfig);
+	const notifificationManager = new NotificationManager(databaseClient, brokerClient);
 
-    await BrokerClient.init(config.brokerConfig);
+    await notifificationManager.init();
+    await brokerClient.init();
 }

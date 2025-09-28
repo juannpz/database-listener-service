@@ -1,26 +1,28 @@
 import { Notification, TableName } from "./notificationManager.definition.ts";
 import { DatabaseClient } from "../../database/DatabaseClient.ts";
-import { IDatabaseConfig } from "../../service.definition.ts";
 import { BrokerClient } from "../../broker/BrokerClient.ts";
 
-export class NotificationManager extends DatabaseClient {
+export class NotificationManager {
+	private databaseClient: DatabaseClient;
+	private brokerClient: BrokerClient;
 
-    private constructor() {
-        super();
+    public constructor(databaseClient: DatabaseClient, brokerClient: BrokerClient) {
+		this.databaseClient = databaseClient;
+		this.brokerClient = brokerClient;
     }
 
-    public static async init(config: IDatabaseConfig) {
-        await this._init(config, this.processNotification);
+    public async init() {
+        await this.databaseClient.init(this.processNotification.bind(this));
     }
     
-    private static async processNotification(payload: string) {
+    private async processNotification(payload: string) {
         const parsedPayload = JSON.parse(payload) as Notification;
 
         console.log(">> Got notification from database");
 
         console.log(parsedPayload);
 
-        await BrokerClient.sendMessage(parsedPayload);
+        await this.brokerClient.sendMessage(parsedPayload);
         
         switch (parsedPayload.table) {
             case TableName.USERS:

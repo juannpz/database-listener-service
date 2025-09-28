@@ -4,15 +4,18 @@ import { Kafka, PartitionerArgs, Producer } from "@kafka";
 
 
 export class BrokerClient {
-    private static client: Kafka | null = null;
-    private static producer: Producer | null = null;
+    private client: Kafka | null = null;
+    private producer: Producer | null = null;
+	private config: IBrokerConfig;
 
-    private constructor() { }
+    public constructor(config: IBrokerConfig) {
+		this.config = config;
+	}
 
-    public static async init(config: IBrokerConfig) {
+    public async init() {
         this.client = new Kafka({
-            brokers: [`${config.BROKER_HOST}:${config.BROKER_PORT}`],
-            clientId: config.BROKER_CLIENT_ID,
+            brokers: [`${this.config.BROKER_HOST}:${this.config.BROKER_PORT}`],
+            clientId: this.config.BROKER_CLIENT_ID,
 			retry: {
 				initialRetryTime: 300,
 				retries: 10
@@ -28,7 +31,7 @@ export class BrokerClient {
         console.log("Broker client initialized");
     }
 
-    public static async sendMessage(payload: Notification) {
+    public async sendMessage(payload: Notification) {
         if (!this.producer)
             throw new Error("Broker producer not initialized");
 
@@ -40,8 +43,8 @@ export class BrokerClient {
         });
     }
 
-    private static createPartitioner() {
-        return (args: PartitionerArgs) => {
+    private createPartitioner() {
+        return (_args: PartitionerArgs) => {
             return 0;
         }
     }
