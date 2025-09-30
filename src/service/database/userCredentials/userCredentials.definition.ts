@@ -1,5 +1,5 @@
 
-export interface IUserCredentials {
+export interface UserCredentials {
     identity_id: number;
     user_id: number;
     email: string;
