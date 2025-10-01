@@ -1,14 +1,14 @@
-import { IBrokerConfig,  } from "../service.definition.ts";
 import { Notification } from "../manager/notificationManager/notificationManager.definition.ts";
+import { BrokerConfig,  } from "../service.definition.ts";
 import { Kafka, PartitionerArgs, Producer } from "@kafka";
 
 
 export class BrokerClient {
     private client: Kafka | null = null;
     private producer: Producer | null = null;
-	private config: IBrokerConfig;
+	private config: BrokerConfig;
 
-    public constructor(config: IBrokerConfig) {
+    public constructor(config: BrokerConfig) {
 		this.config = config;
 	}
 

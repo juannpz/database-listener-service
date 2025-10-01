@@ -1,8 +1,8 @@
-import { IBrokerConfig, IDatabaseConfig, IServiceConfig } from "./service.definition.ts";
+import { BrokerConfig, DatabaseConfig, ServiceConfig } from "./service.definition.ts";
 import { checkEnv } from '@juannpz/deno-service-tools';
 
 export function getConfig() {
-    const config: IServiceConfig = {
+    const config: ServiceConfig = {
         dbConfig: getDatabaseConfig(),
         brokerConfig: getBrokerConfig()
     };
@@ -10,7 +10,7 @@ export function getConfig() {
     return checkEnv(config);
 }
 
-function getDatabaseConfig(): IDatabaseConfig {
+function getDatabaseConfig(): DatabaseConfig {
     return {
         DB_HOST: Deno.env.get("DB_HOST") ?? "",
         DB_PORT: parseInt(Deno.env.get("DB_PORT") ?? ""),
@@ -20,7 +20,7 @@ function getDatabaseConfig(): IDatabaseConfig {
     };
 }
 
-function getBrokerConfig(): IBrokerConfig {
+function getBrokerConfig(): BrokerConfig {
     return {
         BROKER_HOST: Deno.env.get("BROKER_HOST") ?? "",
         BROKER_PORT: parseInt(Deno.env.get("BROKER_PORT") ?? ""),

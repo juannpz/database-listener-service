@@ -1,12 +1,12 @@
-import postgres from '@postgres';
 import { NOTIFICATION_CHANNEL } from "./database.definition.ts";
-import { IDatabaseConfig } from "../service.definition.ts";
+import { DatabaseConfig } from "../service.definition.ts";
+import postgres from '@postgres';
 
 export class DatabaseClient {
     public client: postgres.Sql | null = null;
-	private config: IDatabaseConfig;
+	private config: DatabaseConfig;
 
-    public constructor(config: IDatabaseConfig) {
+    public constructor(config: DatabaseConfig) {
 		this.config = config;
 	}
 
