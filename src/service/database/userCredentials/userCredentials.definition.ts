@@ -1,4 +1,3 @@
-
 export interface UserCredentials {
     identity_id: number;
     user_id: number;
@@ -22,5 +21,5 @@ export enum UserCredentialsColumn {
     PHONE_NUMBER = "phone_number",
     METADATA = "metadata",
     CREATED_AT = "created_at",
-    UPDATED_AT = "updated_at"
+    UPDATED_AT = "updated_at",
 }

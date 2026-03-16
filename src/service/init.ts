@@ -1,8 +1,8 @@
 import { initManager } from "./manager/init.ts";
-import { getConfig } from "./service.config.ts";
+import { SERVICE_CONFIG } from "./service.config.ts";
 
 export async function init() {
-    const config = getConfig();
+    const config = SERVICE_CONFIG;
 
     await initManager(config);
 }

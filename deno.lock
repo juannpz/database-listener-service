@@ -2,7 +2,7 @@
   "version": "5",
   "specifiers": {
     "jsr:@hono/hono@4.7.8": "4.7.8",
-    "jsr:@juannpz/deno-service-tools@0.5.7-2": "0.5.7-2",
+    "jsr:@juannpz/deno-service-tools@0.6.3": "0.6.3",
     "jsr:@std/dotenv@~0.225.5": "0.225.5",
     "npm:kafkajs@2.2.4": "2.2.4"
   },
@@ -10,8 +10,8 @@
     "@hono/hono@4.7.8": {
       "integrity": "620b1eaab065196d4ebe02cff31f8d3a78c94f736ce2ca86ee14f5f26fe48ecd"
     },
-    "@juannpz/deno-service-tools@0.5.7-2": {
-      "integrity": "32f52d9aa25868cf9c891afddad79acdea4d40deeb82a35df313cdc4787c7de4",
+    "@juannpz/deno-service-tools@0.6.3": {
+      "integrity": "3e34ca5a0d7b14ebdff39e96641254a33eaf978c640ff2f0cc2c8cd7ba9ff715",
       "dependencies": [
         "jsr:@hono/hono"
       ]
@@ -892,7 +892,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@juannpz/deno-service-tools@0.5.7-2",
+      "jsr:@juannpz/deno-service-tools@0.6.3",
       "jsr:@std/dotenv@~0.225.5",
       "npm:kafkajs@2.2.4"
     ]

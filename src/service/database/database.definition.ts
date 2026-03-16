@@ -7,14 +7,17 @@ export enum ColumnDefaultValue {
     ZERO = "0",
     EMPTY_STRING = "''",
     EMPTY_JSONB = "'{}'",
-    ONE = "1"
+    ONE = "1",
 }
 
-export interface ForeignKeyConstraint<TargetTable = string, TargetColumn = string> {
+export interface ForeignKeyConstraint<
+    TargetTable = string,
+    TargetColumn = string,
+> {
     table: TargetTable;
     column: TargetColumn;
-    onDelete?: 'CASCADE' | 'SET NULL' | 'SET DEFAULT' | 'RESTRICT' | 'NO ACTION';
-    onUpdate?: 'CASCADE' | 'SET NULL' | 'SET DEFAULT' | 'RESTRICT' | 'NO ACTION';
+    onDelete?: "CASCADE" | "SET NULL" | "SET DEFAULT" | "RESTRICT" | "NO ACTION";
+    onUpdate?: "CASCADE" | "SET NULL" | "SET DEFAULT" | "RESTRICT" | "NO ACTION";
 }
 
 export enum QueryType {
@@ -23,13 +26,13 @@ export enum QueryType {
     UPDATE = "UPDATE",
     DELETE = "DELETE",
     CREATE_TABLE = "CREATE TABLE",
-    DROP_TABLE = "DROP TABLE"
+    DROP_TABLE = "DROP TABLE",
 }
 
 export enum DatabaseTable {
     USERS = "users",
     USER_CREDENTIALS = "user_credentials",
-    USER_STATUS = "user_status"
+    USER_STATUS = "user_status",
 }
 
 export enum QueryOperator {
@@ -44,17 +47,17 @@ export enum QueryOperator {
     BETWEEN = "BETWEEN",
     EXISTS = "EXISTS",
     IS_NULL = "IS NULL",
-    IS_NOT_NULL = "IS NOT NULL"
+    IS_NOT_NULL = "IS NOT NULL",
 }
 
 export enum QuerySeparator {
     AND = "AND",
-    OR = "OR"
+    OR = "OR",
 }
 
 export enum RetrievalFormat {
     OBJECT = "object",
-    ARRAY = "array"
+    ARRAY = "array",
 }
 
 export enum PostgresDataType {
@@ -78,7 +81,7 @@ export enum PostgresDataType {
     JSON = "JSON",
     JSONB = "JSONB",
     UUID = "UUID",
-    ARRAY = "ARRAY"
+    ARRAY = "ARRAY",
 }
 
 export const NOTIFICATION_CHANNEL = "table_changes";

@@ -1,14 +1,14 @@
 import { NOTIFICATION_CHANNEL } from "./database.definition.ts";
 import { DatabaseConfig } from "../service.definition.ts";
-import postgres from '@postgres';
+import postgres from "@postgres";
 
 export class DatabaseClient {
     public client: postgres.Sql | null = null;
-	private config: DatabaseConfig;
+    private config: DatabaseConfig;
 
     public constructor(config: DatabaseConfig) {
-		this.config = config;
-	}
+        this.config = config;
+    }
 
     public async init(listenerCb: (payload: string) => Promise<void>) {
         this.client = postgres({
@@ -16,15 +16,18 @@ export class DatabaseClient {
             hostname: this.config.DB_HOST,
             port: this.config.DB_PORT,
             user: this.config.DB_USER,
-            password: this.config.DB_PASSWORD
+            password: this.config.DB_PASSWORD,
         });
 
         await this.stablishListener(listenerCb);
     }
 
-    public async stablishListener(listenerCb: (payload: string) => Promise<void>) {
-        if (!this.client)
+    public async stablishListener(
+        listenerCb: (payload: string) => Promise<void>,
+    ) {
+        if (!this.client) {
             throw new Error("Postgres client not initialized");
+        }
 
         await this.client.listen(NOTIFICATION_CHANNEL, listenerCb);
 
@@ -32,8 +35,9 @@ export class DatabaseClient {
     }
 
     public async disconnect() {
-        if (!this.client)
+        if (!this.client) {
             throw new Error("Postgres client not initialized");
+        }
 
         await this.client.end();
     }
